@@ -9,6 +9,7 @@ namespace Post.Cmd.Infrastructure.Dispatchers
 {
     public class CommandDispatcher : ICommandDispatcher
     {
+        // Concrete Mediator: Mediator pattern
         private readonly Dictionary<Type, Func<BaseCommand, Task>> _handlers = new();
 
         public void RegisterHandler<T>(Func<T, Task> handler) where T : BaseCommand

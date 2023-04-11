@@ -2,7 +2,10 @@
 Follow this course: https://www.udemy.com/course/net-microservices-cqrs-event-sourcing-with-kafka/
 
 ## Architecture
-![alt text](Architecture+Overview.png "Architecture")
+![alt text](images/Architecture+Overview.png "Architecture")
+
+## Mediator pattern
+![alt text](images/Mediator%2B-%2BCommand%2BDispatching.png "Mediator pattern")
 
 ## Project structure
 ```
