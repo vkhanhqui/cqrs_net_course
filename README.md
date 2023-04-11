@@ -1,9 +1,8 @@
 # CQRS .NET Core 6.0.407
 Follow this course: https://www.udemy.com/course/net-microservices-cqrs-event-sourcing-with-kafka/
 
-
-## Download Client Tools – Robo 3T:
-https://robomongo.org/download
+## Architecture
+![alt text](Architecture+Overview.png "Architecture")
 
 ## Project structure
 ```
