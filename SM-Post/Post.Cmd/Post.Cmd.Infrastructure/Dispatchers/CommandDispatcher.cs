@@ -22,7 +22,10 @@ namespace Post.Cmd.Infrastructure.Dispatchers
 
         public async Task SendAsync(BaseCommand command)
         {
-            if(_handlers.TryGetValue(command.GetType(), out Func<BaseCommand, Task> handler))
+            bool isRegisted = _handlers.TryGetValue(
+                command.GetType(), out Func<BaseCommand, Task> handler);
+            // command must be registed in _handlers before sending
+            if(isRegisted)
             {
                 await handler(command);
             }
