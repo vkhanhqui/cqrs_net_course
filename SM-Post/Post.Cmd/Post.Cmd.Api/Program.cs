@@ -19,11 +19,16 @@ builder.Services.Configure<MongoDbConfig>( // Read configs from appsettings.Deve
     builder.Configuration.GetSection(nameof(MongoDbConfig)));
 builder.Services.Configure<ProducerConfig>( // Read configs from appsettings.Development.json
     builder.Configuration.GetSection(nameof(ProducerConfig)));
+// Have to be in order because they're dependence
+// Scoped: create a new instance for each unique HTTP request
+// Singleton: create a single instance for the entire application
+// Transient: create a new instance everywhere we use it
 builder.Services.AddScoped<IEventStoreRepository, EventStoreRepository>();
-builder.Services.AddScoped<IEventStore, EventStore>();
 builder.Services.AddScoped<IEventProducer, EventProducer>();
+builder.Services.AddScoped<IEventStore, EventStore>();
 builder.Services.AddScoped<IEventSourcingHandler<PostAggregate>, EventSourcingHandler>();
 builder.Services.AddScoped<ICommandHandler, CommandHandler>();
+
 // Register command handler methods
 var commandHandler = builder.Services.BuildServiceProvider().GetRequiredService<ICommandHandler>();
 var dispatcher = new CommandDispatcher();
