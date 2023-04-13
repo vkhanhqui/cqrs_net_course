@@ -39,6 +39,7 @@ dispatcher.RegisterHandler<AddCommentCmd>(commandHandler.HandleAsync);
 dispatcher.RegisterHandler<EditCommentCmd>(commandHandler.HandleAsync);
 dispatcher.RegisterHandler<RemoveCommentCmd>(commandHandler.HandleAsync);
 dispatcher.RegisterHandler<DeletePostCmd>(commandHandler.HandleAsync);
+dispatcher.RegisterHandler<RestoreReadDbCmd>(commandHandler.HandleAsync);
 builder.Services.AddSingleton<ICommandDispatcher>(_ => dispatcher);
 
 // Default

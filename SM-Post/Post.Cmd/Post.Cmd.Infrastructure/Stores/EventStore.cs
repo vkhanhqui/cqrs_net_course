@@ -12,12 +12,20 @@ namespace Post.Cmd.Infrastructure.Stores
         private readonly IEventStoreRepository _eventStoreRepository;
         private readonly IEventProducer _eventProducer;
 
-        public EventStore(
-            IEventStoreRepository eventStoreRepository,
-            IEventProducer eventProducer)
+        public EventStore(IEventStoreRepository eventStoreRepository, IEventProducer eventProducer)
         {
             _eventStoreRepository = eventStoreRepository;
             _eventProducer = eventProducer;
+        }
+
+        public async Task<List<Guid>> GetAggregateIdsAsync()
+        {
+            var eventStream = await _eventStoreRepository.FindAllAsync();
+
+            if (eventStream == null || !eventStream.Any())
+                throw new ArgumentNullException(nameof(eventStream), "Could not retrieve event stream from the event store!");
+
+            return eventStream.Select(x => x.AggregateIdentifier).Distinct().ToList();
         }
 
         public async Task<List<BaseEvent>> GetEventsAsync(Guid aggregateId)
