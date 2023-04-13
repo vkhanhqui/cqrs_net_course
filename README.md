@@ -1,11 +1,14 @@
 # CQRS .NET Core 6.0.407
 Follow this course: https://www.udemy.com/course/net-microservices-cqrs-event-sourcing-with-kafka/
 
-## Architecture
+## Architecture Overview
 ![alt text](images/Architecture+Overview.png "Architecture")
 
 ## Mediator pattern
-![alt text](images/Mediator%2B-%2BCommand%2BDispatching.png "Mediator pattern")
+### 1. The command side
+![alt text](images/Mediator%2B-%2BCommand%2BDispatching.png "Command side")
+### 2. The query side
+![alt text](images/Mediator%2B-%2BQuery%2BDispatching.png "Query side")
 
 ## Project structure
 ```
