@@ -6,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 Action<DbContextOptionsBuilder> configureDbContext = ( // Read configs from appsettings.Development.json
-    o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+    o => o.UseLazyLoadingProxies()
+        .UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 builder.Services.AddDbContext<DatabaseContext>(configureDbContext);
 builder.Services.AddSingleton<DatabaseContextFactory>(new DatabaseContextFactory(configureDbContext));
 
